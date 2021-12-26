@@ -15,7 +15,7 @@
             </div>
             <% } %>
 
-                <form action="/" method="POST" class="item">
+                <form action=<%=route %> method="POST" class="item">
                     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
                     <button type="submit" name="list" value=<%=listTitle %>>+</button>
                 </form>

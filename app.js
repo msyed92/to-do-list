@@ -14,25 +14,17 @@ app.use(express.static("public"))
 
 app.get("/", (req, res) => {
     const day = date.getDate()
-    res.render("list", { listTitle: day, newListItems: items })
+    res.render("list", { listTitle: day, newListItems: items, route: "/" })
 })
 
 app.get("/work", (req, res) => {
-    res.render("list", { listTitle: "Work List", newListItems: workItems })
+    res.render("list", { listTitle: "Work", newListItems: workItems, route: "/work" })
 })
 
 app.post("/", (req, res) => {
-    console.log(req.body)
     const item = req.body.newItem
-    if (req.body.list === "Work") {
-        workItems.push(item)
-        res.redirect("/work")
-    } else {
-        items.push(item)
-        res.redirect("/")
-    }
-
-
+    items.push(item)
+    res.redirect("/")
 })
 
 app.get("/about", (req, res) => {
@@ -41,6 +33,8 @@ app.get("/about", (req, res) => {
 
 app.post("/work", (req, res) => {
     const workItem = req.body.newItem
+    workItems.push(workItem)
+    res.redirect("/work")
 })
 
 
