@@ -5,20 +5,26 @@
             <%= listTitle %>
         </h1>
     </div>
-    <div class="box">
-        <% for (let i=0; i<newListItems.length; i++) {%>
-            <div class="item">
-                <input type="checkbox">
-                <p>
-                    <%= newListItems[i] %>
-                </p>
-            </div>
-            <% } %>
 
-                <form action=<%=route %> method="POST" class="item">
-                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                    <button type="submit" name="list" value=<%=listTitle %>>+</button>
-                </form>
+    <div class="box">
+        <form action=<%=route %> method="POST" class="item"> 
+            <div class="box">
+                <% for (let i=0; i<newListItems.length; i++) {%>
+                    <div class="item">
+                        <input type="checkbox">
+                        <p>
+                            <%= newListItems[i] %>
+                        </p>
+                    </div>
+                <% } %>  
+            </div>                   
+
+    
+        
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="list" value=<%=listTitle %>>+</button>
+        </form>
+    
     </div>
 
     <%- include('footer'); -%>
