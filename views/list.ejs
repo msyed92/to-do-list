@@ -16,11 +16,12 @@
                     <p>
                         <%= newListItems[i] %>
                     </p>
+                    <button type="button" class="delete"><span>&#215;</span></button>
                 </div>
             <% } %>
             <div class="item">
                 <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                <button type="submit" name="list" value=<%=listTitle %>>+</button>
+                <button type="submit" name="list" value=<%=listTitle %> class="add">+</button>
             </div>
             
         </form>    

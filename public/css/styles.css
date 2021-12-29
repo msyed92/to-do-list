@@ -63,7 +63,7 @@ form {
     margin-left: 20px;
 }
 
-button {
+.add {
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -77,9 +77,27 @@ button {
     margin-top: 10px;
 }
 
-button:hover{
+.add:hover{
     background-color: #9367df;
     color: #fff;
+}
+
+.delete {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border-color: #A683E3;
+    background-color: transparent;
+    color: #A683E3;
+    font-size: 20px;
+    border-width: 1px;
+    margin-left: auto;
+    margin: 23px 15px auto auto;
+}
+
+.delete:hover{
+    color: #fff;
+    background-color: #A683E3;
 }
 
 input[type="text"] {
