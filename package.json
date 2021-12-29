@@ -20,6 +20,7 @@
     "heroku": "^7.59.2",
     "jsdom": "^19.0.0",
     "phoenix": "^1.6.5",
-    "query-selector": "^2.0.0"
+    "query-selector": "^2.0.0",
+    "valid-url": "^1.0.9"
   }
 }
