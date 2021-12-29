@@ -7,14 +7,15 @@ const date = require(`${__dirname}/date.js`)
 const app = express()
 const workItems = []
 const items = []
-app.set('view engine', 'ejs');
+let checkedArr = []
+app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
 app.get("/", (req, res) => {
     const day = date.getDate()
-    res.render("list", { listTitle: day, newListItems: items, route: "/" })
+    res.render("list", { listTitle: day, newListItems: items, route: "/", checked: checkedArr })
 })
 
 app.get("/work", (req, res) => {
@@ -24,8 +25,9 @@ app.get("/work", (req, res) => {
 app.post("/", (req, res) => {
     const item = req.body.newItem
     items.push(item)
-    console.log(req.body.checked)
-
+    if(req.body.checkedItems){
+        checkedArr = req.body.checkedItems
+    }
     res.redirect("/")
 })
 
@@ -38,8 +40,6 @@ app.post("/work", (req, res) => {
     workItems.push(workItem)
     res.redirect("/work")
 })
-
-
 
 app.listen(3000, function () {
     console.log("server started on port 3000")
