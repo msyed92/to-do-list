@@ -7,22 +7,22 @@
     <div class="box">
         <form action=<%=route %> method="POST" class="items">           
             <% for (let i=0; i<newListItems.length; i++) {%>
+                    <div class="item" id="item<%=i.toString() %>">
+                        <input type="checkbox" name="checkedItems" value=<%=i %> <% if(checked == i.toString()){ %>
+                            checked
+                        <%  } else if (checked.includes(i.toString())){ %>
+                            checked
+                        <% } %>>
+                        <p>
+                            <%= newListItems[i] %>
+                        </p>
+                        <input type="button" class="delete">
+                    </div>
+                <% } %>
                 <div class="item">
-                    <input type="checkbox" name="checkedItems" value=<%=i %> <% if(checked == i.toString()){ %>
-                        checked
-                    <%  } else if (checked.includes(i.toString())){ %>
-                        checked
-                    <% } %>>
-                    <p>
-                        <%= newListItems[i] %>
-                    </p>
-                    <button type="button" class="delete"><span>&#215;</span></button>
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <button type="submit" name="list" value=<%=listTitle %> class="add">+</button>
                 </div>
-            <% } %>
-            <div class="item">
-                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                <button type="submit" name="list" value=<%=listTitle %> class="add">+</button>
-            </div>
             
         </form>    
     </div>
