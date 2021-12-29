@@ -5,7 +5,7 @@
         </h1>
     </div>
     <div class="box">
-        <form action=<%=route %> method="POST" class="item">           
+        <form action=<%=route %> method="POST" class="items">           
             <% for (let i=0; i<newListItems.length; i++) {%>
                 <div class="item">
                     <input type="checkbox" name="checkedItems" value=<%=i %> <% if(checked == i.toString()){ %>
@@ -18,8 +18,11 @@
                     </p>
                 </div>
             <% } %>
-            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-            <button type="submit" name="list" value=<%=listTitle %>>+</button>
+            <div class="item">
+                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                <button type="submit" name="list" value=<%=listTitle %>>+</button>
+            </div>
+            
         </form>    
     </div>
 <%- include('footer'); -%>

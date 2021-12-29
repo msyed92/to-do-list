@@ -19,13 +19,13 @@ app.get("/", (req, res) => {
 })
 
 app.get("/work", (req, res) => {
-    res.render("list", { listTitle: "Work", newListItems: workItems, route: "/work" })
+    res.render("list", { listTitle: "Work", newListItems: workItems, route: "/work", checked: checkedArr })
 })
 
 app.post("/", (req, res) => {
     const item = req.body.newItem
     items.push(item)
-    if(req.body.checkedItems){
+    if (req.body.checkedItems) {
         checkedArr = req.body.checkedItems
     }
     res.redirect("/")
@@ -38,6 +38,9 @@ app.get("/about", (req, res) => {
 app.post("/work", (req, res) => {
     const workItem = req.body.newItem
     workItems.push(workItem)
+    if (req.body.checkedItems) {
+        checkedArr = req.body.checkedItems
+    }
     res.redirect("/work")
 })
 
