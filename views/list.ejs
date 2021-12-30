@@ -1,29 +1,40 @@
-<%- include('header'); -%>
-    <div class="box" id="heading">
-        <h1>
-            <%= listTitle %>
-        </h1>
-    </div>
-    <div class="box">
-        <form action=<%=route %> method="POST" class="items">           
-            <% for (let i=0; i<newListItems.length; i++) {%>
-                    <div class="item" id="item<%=i.toString() %>">
-                        <input type="checkbox" name="checkedItems" value=<%=i %> <% if(checked == i.toString()){ %>
-                            checked
-                        <%  } else if (checked.includes(i.toString())){ %>
-                            checked
-                        <% } %>>
-                        <p>
-                            <%= newListItems[i] %>
-                        </p>
-                        <input type="button" class="delete">
-                    </div>
-                <% } %>
-                <div class="item">
-                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                    <button type="submit" name="list" value=<%=listTitle %> class="add">+</button>
-                </div>
-            
-        </form>    
-    </div>
-<%- include('footer'); -%>
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1>
+      <%= listTitle %>
+    </h1>
+  </div>
+
+  <div class="box">
+    <% newListItems.forEach(item=> {%>
+
+
+      <div class="item">
+        <form action="/check" method="POST" class="check-form">
+          <input class="check" type="checkbox" onChange="this.form.submit()" name="check" value="<%=item._id %>"
+          <%if (item.checkStatus==true){%>
+            checked<%}%>>
+            <p <%if (item.checkStatus==true){%>
+              class="checked"
+              <%}%>>
+                <%= item.name %>
+            </p>
+            <input type="hidden" name="check" value="<%=item._id %>">
+
+        </form>
+        <form action="/delete" method="POST" class="check-form delete">
+          <button type="submit" class="delete" name="delete" value="<%=item._id %>">x</button>
+        </form>
+      </div>
+
+
+      <%})%>
+
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+          <button type="submit" name="list" class="submit">+</button>
+        </form>
+  </div>
+
+  <%- include("footer") -%>
