@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.connect(
-  "mongodb+srv://admin-syed:aYPLYEUa3r1pZwdH@cluster0.ooo3g.mongodb.net/todolistDB?retryWrites=true&w=majority",
+  "mongodb+srv://admin-test:<pass>@cluster0.ooo3g.mongodb.net/todolistDB?retryWrites=true&w=majority",
   { useNewUrlParser: true })
 
 const itemsSchema = new mongoose.Schema({
