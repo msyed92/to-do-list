@@ -12,8 +12,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const URI = ""
 mongoose.connect(
-  "mongodb+srv://admin-test:<pass>@cluster0.ooo3g.mongodb.net/todolistDB?retryWrites=true&w=majority",
+  URI,
   { useNewUrlParser: true })
 
 const itemsSchema = new mongoose.Schema({
