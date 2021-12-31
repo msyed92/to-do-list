@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const URI = ""
+const URI = "mongodb+srv://admin-syed:YDq9arhItt2WpfSy@cluster0.ooo3g.mongodb.net/todolistDB?retryWrites=true&w=majority"
 mongoose.connect(
   URI,
   { useNewUrlParser: true })
