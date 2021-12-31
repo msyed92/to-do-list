@@ -12,7 +12,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/toDoListDB", { useNewUrlParser: true })
+mongoose.connect(
+  "mongodb+srv://admin-syed:aYPLYEUa3r1pZwdH@cluster0.ooo3g.mongodb.net/todolistDB?retryWrites=true&w=majority",
+  { useNewUrlParser: true })
 
 const itemsSchema = new mongoose.Schema({
   name: String,
@@ -144,10 +146,13 @@ app.post("/check", (req, res) => {
     Item.findOne({ _id: checkID }, function (err, item) {
       item.checkStatus = !item.checkStatus;
       item.save(function (err, updatedItem) {
-
+        if (err) {
+          console.log(err)
+        } else {
+          res.redirect("/")
+        }
       });
-    });
-    res.redirect("/")
+    })
   } else {
     List.findOne({ "items._id": checkID }, (err, list) => {
       if (err) {
@@ -166,7 +171,12 @@ app.get("/about", function (req, res) {
   res.render("about")
 })
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Server started on port 3000")
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, function () {
+  console.log("Server started.")
 })
 
